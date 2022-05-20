@@ -1,0 +1,168 @@
+//IT21263262_Abeykoon A.M.P.N.
+
+//-------------------------------------------------------------Order--------------------------------------------------------------------------------
+
+//Order class header file
+
+//class order
+#define SIZE2 2
+class order
+{
+private:
+    int orderId;
+    char location[40];
+    int offerCode;
+    deliveryStaff* del[SIZE];
+    payment* pay[SIZE2];
+
+
+public:
+    order();
+    order(int porderId, const char plocation[40], int pofferCode);
+    void addDelivary(deliveryStaff* del1, deliveryStaff* del2);
+    void addPayment(payment* pay1, payment* pay2);
+    void deliverItem();
+    void placeOrder();
+    void displayDetails();
+    void confirmOrder();
+    void removeOrder();
+    ~order();
+};
+
+  //order main programme
+
+
+    #include <iostream>
+    #include <cstring>
+    #include "deliveryStaff.h"
+    #include "order.h"
+    using namespace std;
+   //order class functions implementation
+ order::order(int porderId, const char plocation[40], int pofferCode)
+{
+    orderId = porderId;
+    strcpy(location, plocation);
+    offerCode = pofferCode;
+
+}
+void order::addDelivary(deliveryStaff* del1, deliveryStaff* del2) {
+    del[0] = del1;
+    del[1] = del2;
+}
+
+void order::addPayment(payment* pay1, payment* pay2) {
+    pay[0] = pay1;
+    pay[1] = pay2;
+}
+
+void order::deliverItem() {}
+void order::placeOrder() {}
+void order::displayDetails()
+{
+    cout << "order ID is " << orderId << endl;
+    cout << "Location is " << location << endl;
+    cout << "offercode is " << offerCode << endl;
+
+}
+void order::confirmOrder() {}
+void order::removeOrder() {}
+order::~order()
+{
+
+}
+   /order object creation
+   order * n_order = new order(0012,"colombo",1234);
+  
+    deliveryStaff  *d1=new deliveryStaff();
+    deliveryStaff *d2=new deliveryStaff();
+  
+  n_order->addDelivary(d1,d2);
+  
+  payment *pay1=new payment(001,"credit");
+  payment *pay2=new payment(002,"debit");
+  
+  n_order->addPayment(pay1,pay2);
+  cout<<"Order:"<<endl;
+  cout<<endl;
+ n_order->displayDetails();
+delete n_order;
+return 0;
+}
+//-------------------------------------------------------------Delivery Staff--------------------------------------------------------------------------------
+
+//deliveryStaff class header file
+
+//class deliveryStaff
+#define SIZE 2
+class deliveryStaff
+{
+private:
+    char deliverId[10];
+    char deliverPassword[50];
+
+    driver* driv[SIZE];
+
+public:
+    deliveryStaff();
+    deliveryStaff(const char Id[10],const char password[50], const char driverUsername_1[],const char driverPassword_1[],const char
+        driverUsername_2[],const char driverPassword_2[]);
+
+    void processOrder();
+    void assignDriver();
+    void addDeliveryStaff();
+    ~deliveryStaff();
+
+};
+
+
+//deliveryStaff main programme
+
+
+#include <iostream>
+#include <cstring>
+#include "deliveryStaff.h"
+#include "driver.h"
+using namespace std;
+
+//deliveryStaff class functions impelmentation
+deliveryStaff::deliveryStaff()
+{
+    strcpy(deliverId, "");
+    strcpy(deliverPassword, "");
+}
+deliveryStaff::deliveryStaff(const char Id[10],const char password[50], const char driverUsername_1[],const char driverPassword_1[], const char
+    driverUsername_2[], const char driverPassword_2[])
+{
+    strcpy(deliverId, Id);
+    strcpy(deliverPassword, password);
+
+    driv[0] = new driver(driverUsername_1, driverPassword_1);
+    driv[1] = new driver(driverUsername_2, driverPassword_2);
+}
+
+void deliveryStaff::processOrder()
+{
+
+}
+
+void deliveryStaff::assignDriver()
+{
+
+}
+
+deliveryStaff::~deliveryStaff()
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        delete driv[i];
+    }
+
+}
+int main() {
+ //deliveryStaff object creation
+  deliveryStaff *n_deliveryStaff = new deliveryStaff("001","abc1245", "kamal12345", "bhv25454","nuwan546","mnb4515");
+
+  delete n_deliveryStaff;
+
+  return 0;
+}
