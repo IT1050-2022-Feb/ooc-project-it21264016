@@ -1,1 +1,67 @@
+// IT21264016 HELAPALLA KOPS
+//-------------------------------------------------------------Veterinary Surgeon--------------------------------------------------------------------------------
 
+//veterinarySurgeon class header file
+
+//class veterinarySurgeon 
+class veterinarySurgeon {
+private:
+    char vetUserName[40];
+    char vetName[40];
+    char vetEmail[30];
+    char vetPassword[30];
+    int vetId;
+
+public:
+    veterinarySurgeon(const char pvetUserName[40],const  char pvetName[40],const char pvetEmail[30], const char pvetPassword[30], int pvetId);
+    void login();
+    void logout();
+    void issuePrescription();
+    void RescheduleAppointment(appointment* appoin);
+    void displayDetails();
+    ~veterinarySurgeon();
+};
+
+
+//Veterinary Surgeon main programme
+
+
+#include <iostream>
+#include <cstring>
+#include "veterinarySurgeon.h"
+using namespace std;
+
+//veterinarySurgeon class funcions implementation
+veterinarySurgeon::veterinarySurgeon(const char pvetUserName[40], const char pvetName[40], const char pvetEmail[30],const char pvetPassword[30], int pvetId) {
+    strcpy(vetUserName, pvetUserName);
+    strcpy(vetName, pvetName);
+    strcpy(vetEmail, pvetEmail);
+    strcpy(vetPassword, pvetPassword);
+    vetId = pvetId;
+}
+void veterinarySurgeon::login() {}
+
+void veterinarySurgeon::logout() {}
+void veterinarySurgeon::issuePrescription() {}
+void veterinarySurgeon::RescheduleAppointment(appointment* appoin) {}
+void veterinarySurgeon::displayDetails()
+{
+    cout << "vet username is: " << vetUserName << endl;
+    cout << "vet name is: " << vetName << endl;
+    cout << "vet email is: " << vetEmail << endl;
+    cout << "vet ID is : " << vetId << endl;
+
+}
+veterinarySurgeon :: ~veterinarySurgeon() {}
+
+
+int main() {
+   //veterinary surgeon object creation
+    veterinarySurgeon *n_veterinarySurgeon = new veterinarySurgeon( "lakshan55", "lakshan" ,"lakshan77@gmail.com", "5566004", 9988);
+       cout<<"Veterinary Surgeon:"<<endl;
+      cout<<endl;  
+   n_veterinarySurgeon ->displayDetails();
+   
+   delete n_veterinarySurgeon;
+  return 0;
+}
