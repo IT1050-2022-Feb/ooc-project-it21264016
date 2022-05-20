@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cstring>
+#define SIZE2 2
+using namespace std;
+//class implementation
+//class appointment
+class appointment {
+private:
+	char appointmentID[30];
+	char date[20];
+public:
+	appointment();
+	appointment(const char pappointmentID[30], const char pdate[20]);
+	void displayDetails();
+	~appointment();
+};
+
+//class guestCustomer
+class guestCustomer {
+protected:
+	int cusId;
+	char cusName[50];
+	char cusEmail[40];
+	char cusAddress[40];
+	int cusTelephone;
+public:
+	guestCustomer();
+	guestCustomer(int CID, const char Name[50], const char
+	Email[40], const char Address[40], int telephone);
+	void registerUser();
+	void serchPetStoreItems();
+	void displayItems();
+	void displayDetails();
+	~guestCustomer();
+};
+
+guestCustomer::guestCustomer(int cID, const char name[50], const char
+email[40], const char address[40], int telephone)
+{
+	cusId = cID;
+	strcpy(cusName, name);
+	strcpy(cusEmail, email);
+	strcpy(cusAddress, address);
+	cusTelephone = telephone;
+}
+void guestCustomer::registerUser()
+{
+}
+void guestCustomer::serchPetStoreItems()
+{
+}
+void guestCustomer::displayItems()
+{
+}
+void guestCustomer :: displayDetails(){
+	cout << "the customer Id is: " << cusId << endl;
+	cout << "the customer name is: " << cusName << endl;
+	cout << "the customer email is: " << cusEmail << endl;
+
+	cout << "the customer address is : " << cusAddress << endl;
+	cout << "the telephone number is : " << cusTelephone << endl;
+}
+guestCustomer::~guestCustomer()
+{
+}
+
+int main(){
+//appointment object creation
+appointment *n_appointment = new appointment("100", "05/08/2022");
+cout<<"Appointment:"<<endl;
+cout<<endl;
+n_appointment->displayDetails();
+
+//Guest customer object creation
+guestCustomer *n_guestCustomer = new guestCustomer(05 , "Kamal" , 
+"kamalbandara2000@gmail.com" , "Maralanda,Kurunegala" , 077-2345656);
+cout <<endl;
+cout << "=======================================" << endl; 
+cout << endl;
+
+return 0;
+}
