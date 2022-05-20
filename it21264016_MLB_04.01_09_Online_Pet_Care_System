@@ -65,3 +65,38 @@ int main() {
    delete n_veterinarySurgeon;
   return 0;
 }
+
+//payment class
+class payment
+{
+private:
+	int paymentId;
+	char paymentType[40];
+
+public:
+
+	payment(int ppaymentId, const char ppaymentType[40]);
+	void validDetails();
+	float calculateTotal(float price, float discount);
+	~payment();
+
+};
+
+//payment class functions implementation
+payment::payment(int ppaymentId,const char ppaymentType[40]) {
+	paymentId = ppaymentId;
+	strcpy(paymentType, ppaymentType);
+}
+void payment::validDetails() {}
+
+float payment::calculateTotal(float price, float discount) {
+	return (price - discount);
+}
+payment::~payment()
+{
+	
+}
+
+//payment object creation
+   payment *n_payment = new payment(443335,"credit");
+
